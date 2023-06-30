@@ -28,7 +28,7 @@ cantidadCosasQueTiene(Alguien,C,Cantidad):-
 % Enunciado de labo:
 % Punto 8
 /*practica(Persona, Deporte)
-Posibles deportes (functores):
+Posibles estadisticas de deportes (functores):
 natacion(MetrosDiarios, Medallas)
 futbol(Medallas, Goles, Expulsiones)
 rugby(Posicion, Medallas)
@@ -130,8 +130,20 @@ cantidadDeportesNoBuenos(Persona, Cantidad):-
     findall(Deporte, noDestacaEn(Deporte, Persona), Deportes),
     length(Deportes, Cantidad).
 
+%% Asumiendo que lo que se pide son los deportes que la persona practica pero no se destaca.
 noDestacaEn(Deporte, Persona):-
     practica(Persona, Deporte),
     not(esBueno(Deporte)).
+
+%% Si se interpreta como los deportes que existan y que la persona no se destaca, 
+%% es necesario tener información de los nombres de los deportes existentes, 
+%% vincular a los functores de las estadisitcas con el nombre del deporte 
+%% y la solución se complica un poco más.
+
+nombreDeporte(rugby).
+nombreDeporte(futbol).
+nombreDeporte(tenins).
+nombreDeporte(natacion).
+
 
 
